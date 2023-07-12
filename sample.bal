@@ -23,6 +23,8 @@ final string[] & readonly columnNames = [
     "Issue Created At"
 ];
 
+configurable string recipientAddress = ?;
+
 // Github configuration parameters
 configurable github:ListenerConfig gitHubListenerConfig = ?;
 
@@ -34,7 +36,6 @@ configurable string worksheetName = ?;
 listener http:Listener httpListener = new(8090);
 listener github:Listener gitHubListener = new (gitHubListenerConfig, httpListener);
 
- string recipientAddress = "hansijayanika@gmail.com";
 
 @display { label: "GitHub New Issue to Google Sheets Row" }
 service github:IssuesService on gitHubListener {
